@@ -1,0 +1,11 @@
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\bin\Debug\netcoreapp3.0\Northwind.exe
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\bin\Debug\netcoreapp3.0\Northwind.deps.json
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\bin\Debug\netcoreapp3.0\Northwind.runtimeconfig.json
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\bin\Debug\netcoreapp3.0\Northwind.runtimeconfig.dev.json
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\bin\Debug\netcoreapp3.0\Northwind.dll
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\bin\Debug\netcoreapp3.0\Northwind.pdb
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\obj\Debug\netcoreapp3.0\Northwind.csprojAssemblyReference.cache
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\obj\Debug\netcoreapp3.0\Northwind.AssemblyInfoInputs.cache
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\obj\Debug\netcoreapp3.0\Northwind.AssemblyInfo.cs
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\obj\Debug\netcoreapp3.0\Northwind.dll
+C:\Users\Ivan Spajic\source\repos\Northwind\Northwind\obj\Debug\netcoreapp3.0\Northwind.pdb
