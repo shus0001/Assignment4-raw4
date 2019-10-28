@@ -49,7 +49,10 @@ namespace _2._Data_Layer
 
         public IEnumerable<Category> GetAll()
         {
-            throw new NotImplementedException();
+            foreach (var category in databaseContext.Categories)
+            {
+                yield return category;
+            }
         }
 
         public Category GetById(int id)
