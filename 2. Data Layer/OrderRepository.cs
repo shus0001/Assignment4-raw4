@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 
 namespace _2._Data_Layer
@@ -25,7 +26,7 @@ namespace _2._Data_Layer
 
         public Order GetById(int id)
         {
-            return databaseContext.Orders.Include("OrderDetails.Product.Category").Where(o => o.Id == id).First();
+            return databaseContext.Orders.Include("OrderDetails.Product.Category").First(o => o.Id == id);
         }
 
         public IEnumerable<Order> GetByShippingName(string shippingName)
