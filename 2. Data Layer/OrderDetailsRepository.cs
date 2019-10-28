@@ -18,12 +18,20 @@ namespace _2._Data_Layer
 
         public IEnumerable<OrderDetails> GetByOrderId(int id)
         {
-            throw new NotImplementedException();
+            foreach (var o in databaseContext.OrderDetails)
+            {
+                if(o != null && o.OrderId == id)
+                    yield return o;
+            }
         }
 
         public IEnumerable<OrderDetails> GetByProductId(int id)
         {
-            throw new NotImplementedException();
+            foreach (var o in databaseContext.OrderDetails)
+            {
+                if (o != null && o.ProductId == id)
+                    yield return o;
+            }
         }
     }
 }

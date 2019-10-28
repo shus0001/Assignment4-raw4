@@ -28,7 +28,11 @@ namespace _2._Data_Layer
 
         public IEnumerable<Order> GetByShippingName(string shippingName)
         {
-            throw new NotImplementedException();
+            foreach (var o in databaseContext.Orders)
+            {
+                if (o.ShipName == shippingName)
+                    yield return o;
+            }
         }
     }
 }
