@@ -20,7 +20,16 @@ namespace _2._Data_Layer
 
         public IEnumerable<Product> GetByCategoryId(int categoryId)
         {
-            return databaseContext.Products.Where(p => p.CategoryId == categoryId);
+            var productById = databaseContext.Products.Where(p => p.CategoryId == categoryId).ToList();
+            foreach (var p in productById)
+            {
+                // Inspiration from here: https://stackoverflow.com/a/13845414/9332260
+                var iso = Encoding.GetEncoding("ISO-8859-1");
+                var utf8 = Encoding.UTF8;
+                var msg = utf8.GetString(iso.GetBytes(p.Name));
+                p.Name = msg;
+            }
+            return productById;
         }
 
         public IEnumerable<Product> GetByContainedSubstringInName(string substring)

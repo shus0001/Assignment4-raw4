@@ -8,7 +8,7 @@ namespace _2._Data_Layer.Database_Context
 {
     public class NorthwindContext : DbContext
     {
-        private const string connectionString = "host=localhost;db=northwind;uid=postgres;pwd=";
+        private const string connectionString = "host=localhost;db=northwind;uid=postgres;pwd=Hotmai12";
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -44,7 +44,7 @@ namespace _2._Data_Layer.Database_Context
             modelBuilder.Entity<Order>().Property(m => m.ShipCity).HasColumnName("shipcity");
 
             modelBuilder.Entity<OrderDetails>().ToTable("orderdetails");
-            modelBuilder.Entity<OrderDetails>().HasKey(m => new {m.OrderId, m.ProductId});
+            modelBuilder.Entity<OrderDetails>().HasKey(m => new { m.OrderId, m.ProductId });
             modelBuilder.Entity<OrderDetails>().Property(m => m.UnitPrice).HasColumnName("unitprice");
             modelBuilder.Entity<OrderDetails>().Property(m => m.Quantity).HasColumnName("quantity");
             modelBuilder.Entity<OrderDetails>().Property(m => m.Discount).HasColumnName("discount");
