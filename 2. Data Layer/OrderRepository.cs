@@ -3,6 +3,7 @@ using _1._Data_Layer_Abstraction;
 using _2._Data_Layer.Database_Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace _2._Data_Layer
@@ -28,11 +29,7 @@ namespace _2._Data_Layer
 
         public IEnumerable<Order> GetByShippingName(string shippingName)
         {
-            foreach (var o in databaseContext.Orders)
-            {
-                if (o.ShipName == shippingName)
-                    yield return o;
-            }
+            return databaseContext.Orders.Where(o => o.ShipName == shippingName);
         }
     }
 }

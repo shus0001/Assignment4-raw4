@@ -3,6 +3,7 @@ using _1._Data_Layer_Abstraction;
 using _2._Data_Layer.Database_Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace _2._Data_Layer
@@ -18,20 +19,12 @@ namespace _2._Data_Layer
 
         public IEnumerable<Product> GetByCategoryId(int categoryId)
         {
-            foreach(Product p in databaseContext.Products)
-            {
-                if (p.CategoryId == categoryId)
-                    yield return p;
-            }
+            return databaseContext.Products.Where(p => p.CategoryId == categoryId);
         }
 
         public IEnumerable<Product> GetByContainedSubstringInName(string substring)
         {
-            foreach (Product p in databaseContext.Products)
-            {
-                if (p.Name.Contains(substring))
-                    yield return p;
-            }
+            return databaseContext.Products.Where(p => p.Name.Contains(substring));
         }
 
         public Product GetById(int id)
