@@ -1,6 +1,7 @@
 ﻿using _0._Models;
 using _1._Data_Layer_Abstraction;
 using _2._Data_Layer.Database_Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,12 @@ namespace _2._Data_Layer
 
         public IEnumerable<OrderDetails> GetByOrderId(int id)
         {
-            return databaseContext.OrderDetails.Where(o => o.OrderId == id);
+            return databaseContext.OrderDetails.Include("Product").Where(o => o.OrderId == id);
         }
 
         public IEnumerable<OrderDetails> GetByProductId(int id)
         {
-            return databaseContext.OrderDetails.Where(o => o.ProductId == id);
+            return databaseContext.OrderDetails.Include("Order").Where(o => o.ProductId == id);
         }
     }
 }
