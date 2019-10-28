@@ -134,8 +134,8 @@ namespace Assignment4.Tests
             var service = factory.ProductRepository;
             var products = service.GetByContainedSubstringInName("em").ToList();
             Assert.Equal(4, products.Count);
-            //Assert.Equal("NuNuCa Nuﬂ-Nougat-Creme", products.First().ProductName); same here, are these meant to be just 'name'?
-            //Assert.Equal("Flotemysost", products.Last().ProductName);                 ------------------||------------------
+            Assert.Equal("NuNuCa Nuﬂ-Nougat-Creme", products.First().Name);
+            Assert.Equal("Flotemysost", products.Last().Name);
         }
 
         /* orders */
@@ -156,9 +156,9 @@ namespace Assignment4.Tests
         {
             var service = factory.OrderRepository;
             var order = service.GetById(10248);
-            //Assert.Equal(3, order.OrderDetails.Count); this should obviously be a list in the model itself
-            //Assert.Equal("Queso Cabrales", order.OrderDetails.First().Product.Name);
-            //Assert.Equal("Dairy Products", order.OrderDetails.First().Product.Category.Name);
+            Assert.Equal(3, order.OrderDetails.Count);
+            Assert.Equal("Queso Cabrales", order.OrderDetails.First().Product.Name);
+            Assert.Equal("Dairy Products", order.OrderDetails.First().Product.Category.Name);
         }
 
         [Fact]
