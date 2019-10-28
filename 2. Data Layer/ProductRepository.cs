@@ -1,6 +1,7 @@
 ﻿using _0._Models;
 using _1._Data_Layer_Abstraction;
 using _2._Data_Layer.Database_Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace _2._Data_Layer
 
         public Product GetById(int id)
         {
-            return databaseContext.Products.Find(id);
+            return databaseContext.Products.Include("Category").Where(p => p.Id == id).First();
         }
     }
 }
