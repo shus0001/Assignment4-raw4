@@ -65,6 +65,8 @@ namespace _2._Data_Layer
                 cat.Description = description;
                 cat.Name = name;
 
+                databaseContext.SaveChanges();
+
                 return true;
             }
             return false;
