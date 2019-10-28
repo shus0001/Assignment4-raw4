@@ -18,17 +18,25 @@ namespace _2._Data_Layer
 
         public IEnumerable<Product> GetByCategoryId(int categoryId)
         {
-            throw new NotImplementedException();
+            foreach(Product p in databaseContext.Products)
+            {
+                if (p.CategoryId == categoryId)
+                    yield return p;
+            }
         }
 
         public IEnumerable<Product> GetByContainedSubstringInName(string substring)
         {
-            throw new NotImplementedException();
+            foreach (Product p in databaseContext.Products)
+            {
+                if (p.Name.Contains(substring))
+                    yield return p;
+            }
         }
 
         public Product GetById(int id)
         {
-            throw new NotImplementedException();
+            return databaseContext.Products.Find(id);
         }
     }
 }
