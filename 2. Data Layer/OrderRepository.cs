@@ -19,7 +19,7 @@ namespace _2._Data_Layer
 
         public IEnumerable<Order> GetAll()
         {
-            return databaseContext.Orders.ToList();
+            return databaseContext.Orders;
         }
 
         public Order GetById(int id)
