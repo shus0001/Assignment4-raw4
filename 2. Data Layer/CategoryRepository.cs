@@ -44,9 +44,6 @@ namespace _2._Data_Layer
 
                 return true;
             }
-
-            databaseContext.SaveChanges();
-
             return false;
         }
 
@@ -57,12 +54,22 @@ namespace _2._Data_Layer
 
         public Category GetById(int id)
         {
-            throw new NotImplementedException();
+            return databaseContext.Categories.Find(id);
         }
 
         public bool Update(int id, string name, string description)
         {
-            throw new NotImplementedException();
+            var cat = databaseContext.Categories.Find(id);
+            if (cat != null)
+            {
+                cat.Description = description;
+                cat.Name = name;
+
+                databaseContext.SaveChanges();
+
+                return true;
+            }
+            return false;
         }
     }
 }
