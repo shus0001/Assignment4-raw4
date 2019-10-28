@@ -28,7 +28,7 @@ namespace _2._Data_Layer
                 Description = description
             };
 
-             databaseContext.Categories.Add(cat);
+            databaseContext.Categories.Add(cat);
 
             databaseContext.SaveChanges();
 
