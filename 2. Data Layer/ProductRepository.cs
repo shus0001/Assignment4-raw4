@@ -24,6 +24,7 @@ namespace _2._Data_Layer
             var productById = databaseContext.Products.Where(p => p.CategoryId == categoryId).ToList();
             foreach (var p in productById)
             {
+                // Fixing swedish special characters encoding issue: "ö"
                 // Inspiration from here: https://stackoverflow.com/a/13845414/9332260
                 var iso = Encoding.GetEncoding("ISO-8859-1");
                 var name = Encoding.UTF8.GetString(iso.GetBytes(p.Name));
@@ -39,6 +40,7 @@ namespace _2._Data_Layer
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             foreach (var p in productBySubstring)
             {
+                // Fixing german special characters encoding issue: "ß"
                 var iso = Encoding.GetEncoding(1252);
                 var name = Encoding.UTF8.GetString(iso.GetBytes(p.Name));
                 p.Name = name;
