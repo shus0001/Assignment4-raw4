@@ -44,7 +44,7 @@ namespace _2._Data_Layer.Database_Context
             modelBuilder.Entity<Order>().Property(m => m.ShipCity).HasColumnName("shipcity");
 
             modelBuilder.Entity<OrderDetails>().ToTable("orderdetails");
-            modelBuilder.Entity<OrderDetails>().HasKey(m => new { m.OrderId, m.ProductId });
+            modelBuilder.Entity<OrderDetails>().HasKey(m => new {m.OrderId, m.ProductId});
             modelBuilder.Entity<OrderDetails>().Property(m => m.UnitPrice).HasColumnName("unitprice");
             modelBuilder.Entity<OrderDetails>().Property(m => m.Quantity).HasColumnName("quantity");
             modelBuilder.Entity<OrderDetails>().Property(m => m.Discount).HasColumnName("discount");
