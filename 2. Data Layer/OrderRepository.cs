@@ -18,12 +18,12 @@ namespace _2._Data_Layer
 
         public IEnumerable<Order> GetAll()
         {
-            throw new NotImplementedException();
+            return databaseContext.Orders;
         }
 
         public Order GetById(int id)
         {
-            throw new NotImplementedException();
+            return databaseContext.Orders.Find(id);
         }
 
         public IEnumerable<Order> GetByShippingName(string shippingName)
