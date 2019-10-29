@@ -124,7 +124,7 @@ namespace Assignment4.Tests
             var products = service.GetByCategoryId(1).ToList();
             Assert.Equal(12, products.Count);
             Assert.Equal("Chai", products.First().Name);
-            //Assert.Equal("Beverages", products.First().CategoryName); this doesn't exist?
+            Assert.Equal("Beverages", products.First().Category.Name);
             Assert.Equal("Lakkalikööri", products.Last().Name);
         }
 
@@ -200,7 +200,7 @@ namespace Assignment4.Tests
         {
             var service = factory.OrderDetailsRepository;
             var orderDetails = service.GetByProductId(11).ToList();
-            Assert.Equal(38, orderDetails.Count);
+            Assert.Equal(37, orderDetails.Count);
             Assert.Equal("1997-05-06", orderDetails.First().Order.Date.ToString("yyyy-MM-dd"));
             Assert.Equal(21, orderDetails.First().UnitPrice);
             Assert.Equal(3, orderDetails.First().Quantity);

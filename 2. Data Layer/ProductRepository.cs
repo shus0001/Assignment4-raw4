@@ -21,7 +21,7 @@ namespace _2._Data_Layer
 
         public IEnumerable<Product> GetByCategoryId(int categoryId)
         {
-            var productById = databaseContext.Products.Where(p => p.CategoryId == categoryId).ToList();
+            var productById = databaseContext.Products.Include("Category").Where(p => p.CategoryId == categoryId).ToList();
             foreach (var p in productById)
             {
                 // Fixing swedish special characters encoding issue: "ö"
