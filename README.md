@@ -20,7 +20,11 @@ This assignment was developed by group **raw4** of course RAWDATA (Master's in C
 
 ----
 
-## Current status: Part 1 Complete. 18 out of 18 tests pass.
+## Current status:
+![#008000](https://placehold.it/15/008000/000000?text=+) Part 1: Complete. 18 out of 18 tests pass.
+
+![#FFA500](https://placehold.it/15/FFA500/000000?text=+) Part 2: Yet to start.
+
 
 ## Results:
 
@@ -28,7 +32,7 @@ This assignment was developed by group **raw4** of course RAWDATA (Master's in C
 
 <img src="Resources/Terminal-testing.png" width=500px>
 
-2. Visual Studio test explorer
+2. Visual Studio test explorer:
 
 <img src="Resources/Test-Explorer.png" width=300px>
 
@@ -36,25 +40,33 @@ This assignment was developed by group **raw4** of course RAWDATA (Master's in C
 
 ## Steps to reproduce:
 
-> **Prerequisites: You must have [Git](https://git-scm.com/downloads) and [.Net Core 3.0 SDK](https://dotnet.microsoft.com/download) installed. Use OS and IDE of your choice.**
-
-> **Additionally, you must have [PostgreSQL](https://www.postgresql.org/download/) installed with the database set up.**
+> **Prerequisites: You must have [Git](https://git-scm.com/downloads) and [.Net Core 3.0 SDK](https://dotnet.microsoft.com/download) installed. Use OS and IDE of your choice. Additionally, you must have [PostgreSQL](https://www.postgresql.org/download/) installed with the database set up.**
 
 0. Open a terminal and clone the project: `git clone https://github.com/shus0001/Assignment4-raw4.git`
 
 2. Navigate into the project: `cd Assignment4-raw4`
 
-### If you have the database setup already, skip to step 3.
+----
 
-> _These steps assumes you are using Windows, "postgres" is the user as setup by default when installing PostgreSQL and you have set the Environment Variables correctly.._
+**If you have the database setup already, skip to step 3.**
 
-1. From the same terminal, create a database: `psql -U postgres -c "create database northwind"` 
+> _These steps assumes you are using Windows, "postgres" is the user as setup by default when installing PostgreSQL and you have set the "Environment Variables" correctly._
 
-2. Using the provided `.sql` file, seed the database: `psql -U postgres -d northwind -f .\Resources\northwind_postgres.sql`
+1. From the same terminal, create a database:
+```
+psql -U postgres -c "create database northwind"
+``` 
 
-Now, the database has been created and seeded. Use the software of your choice to connect and visualise the database, or use the included pgAdmin. For more information on the database, [read here](https://github.com/shus0001/Assignment4-raw4/blob/master/RAWDATA%202018%20-%20Assignment%204%20part%20I.pdf).
+2. Using the provided `.sql` file, seed the database:
+```
+psql -U postgres -d northwind -f .\Resources\northwind_postgres.sql
+```
 
-#### 3. Important: Update with the password of your postgres user in `.\Data Layer\Database Context\NorthwindContext.cs`: Line 11 on the variable `string connectionString`.
+Now, the database has been created and seeded. Use the software of your choice to connect and visualise the database, or use the included pgAdmin. For more information on the data, [read here.](https://github.com/shus0001/Assignment4-raw4/blob/master/RAWDATA%202018%20-%20Assignment%204%20part%20I.pdf)
+
+----
+
+3. **Important:** Update with the password of your postgres user in `.\Data Layer\Database Context\NorthwindContext.cs`: Line 11 on the variable `string connectionString`.
 > _You can also update the name of the database and the user if you had your database set up differently._
 
 ----
@@ -65,7 +77,7 @@ Now, the database has been created and seeded. Use the software of your choice t
 4. run `dotnet test`
 
 #### Visual Studio:
-5. Open Project or Solution > from the cloned folder, open solution named `Northwind.sln`.
+5. Open Project or Solution > navigate to the cloned folder and open solution named `Northwind.sln`.
 
 6. Run the test by opening Test menu > Run All Tests.
 
