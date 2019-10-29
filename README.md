@@ -9,7 +9,7 @@ The first part is about creating a domain model and as data service. The data se
 
 In the second part, a restful webservice is added in a layer on top of the data layer from the first part. 
 
-[Assignment description](RAWDATA 2018 - Assignment 4 part I.pdf)
+[Assignment description part 1](https://github.com/shus0001/Assignment4-raw4/blob/master/RAWDATA%202018%20-%20Assignment%204%20part%20I.pdf)
 
 
 This assignment was developed by group **raw4** of course RAWDATA (Master's in Computer Science, Roskilde University):
@@ -18,16 +18,58 @@ This assignment was developed by group **raw4** of course RAWDATA (Master's in C
 - [Ivan Spajić](https://github.com/ivanspajic)
 - [Manish Shrestha](https://github.com/shrestaz)
 
-## Current status: Project start. Work in progress.
+----
 
+## Current status: Part 1 Complete. 18 out of 18 tests pass.
+
+## Results:
+
+1. Terminal:
+
+<img src="Resources/Terminal-testing.png" width=500px>
+
+2. Visual Studio test explorer
+
+<img src="Resources/Test-Explorer.png" width=300px>
+
+----
 
 ## Steps to reproduce:
 
 > **Prerequisites: You must have [Git](https://git-scm.com/downloads) and [.Net Core 3.0 SDK](https://dotnet.microsoft.com/download) installed. Use OS and IDE of your choice.**
 
-0. `git clone https://github.com/shus0001/Assignment4-raw4.git`
+> **Additionally, you must have [PostgreSQL](https://www.postgresql.org/download/) installed with the database set up.**
 
-_The rest in a work in progress._ 👷‍♀️👷‍♂️
+0. Open a terminal and clone the project: `git clone https://github.com/shus0001/Assignment4-raw4.git`
+
+2. Navigate into the project: `cd Assignment4-raw4`
+
+### If you have the database setup already, skip to step 3.
+
+> _These steps assumes you are using Windows, "postgres" is the user as setup by default when installing PostgreSQL and you have set the Environment Variables correctly.._
+
+1. From the same terminal, create a database: `psql -U postgres -c "create database northwind"` 
+
+2. Using the provided `.sql` file, seed the database: `psql -U postgres -d northwind -f .\Resources\northwind_postgres.sql`
+
+Now, the database has been created and seeded. Use the software of your choice to connect and visualise the database, or use the included pgAdmin. For more information on the database, [read here](https://github.com/shus0001/Assignment4-raw4/blob/master/RAWDATA%202018%20-%20Assignment%204%20part%20I.pdf).
+
+#### 3. Important: Update with the password of your postgres user in `.\Data Layer\Database Context\NorthwindContext.cs`: Line 11 on the variable `string connectionString`.
+> _You can also update the name of the database and the user if you had your database set up differently._
+
+----
+
+### Running the tests
+
+#### Terminal:
+4. run `dotnet test`
+
+#### Visual Studio:
+5. Open Project or Solution > from the cloned folder, open solution named `Northwind.sln`.
+
+6. Run the test by opening Test menu > Run All Tests.
+
+_Part 2 of the assignment has not yet started. Come back for a restful webservice built on top of this data layer._ 👷‍♀️👷‍♂️
 
 
 Happy Coding! 👨‍💻 👩‍💻
