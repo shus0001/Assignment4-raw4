@@ -1,4 +1,3 @@
-using _0._Factory;
 using _0._Models;
 using System;
 using System.Linq;
@@ -9,7 +8,6 @@ namespace Assignment4.Tests
     public class DataServiceTests
     {
         /* Categories */
-        private Factory factory = new Factory();
         [Fact]
         public void Category_Object_HasIdNameAndDescription()
         {

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace _2._Data_Layer.Database_Context
+namespace _3._Data_Layer.Database_Context
 {
     public class NorthwindContext : DbContext
     {
