@@ -166,7 +166,7 @@ namespace Assignment4.Tests
         {
             var service = factory.OrderRepository;
             var orders = service.GetAll().ToList();
-            Assert.Equal(830, orders.Count);
+            Assert.Equal(829, orders.Count);
         }
 
 
