@@ -33,7 +33,7 @@ namespace _1._Northwind_API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{categories}", Name = nameof(GetCategory))]
+        [HttpGet("{categoryId}", Name = nameof(GetCategory))]
         public ActionResult GetCategory(int categoryId)
         {
             var category = categoryRepository.GetById(categoryId);
@@ -59,21 +59,11 @@ namespace _1._Northwind_API.Controllers
             return dto;
         }
 
-        private object CreateResult(IEnumerable<Category> categories)
+        private IEnumerable<CategoryDto> CreateResult(IEnumerable<Category> categories)
         {
-            var totalItems = categoryRepository.NumberOfCategories();
-            return new
-            {
-                totalItems,
-                items = categories.Select(CreateCategoryDto)
-            };
+            foreach (Category c in categories)
+                yield return CreateCategoryDto(c);
         }
-
-        private string CreatePagingLink(int page, int pageSize)
-        {
-            return Url.Link(nameof(GetCategories), new { page, pageSize });
-        }
-
 
     }
 }
