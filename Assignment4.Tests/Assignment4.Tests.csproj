@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\0. Models\0. Models.csproj" />
     <ProjectReference Include="..\2. Data Layer Abstraction\2. Data Layer Abstraction.csproj" />
+    <ProjectReference Include="..\3. Data Layer\3. Data Layer.csproj" />
   </ItemGroup>
 
 </Project>
