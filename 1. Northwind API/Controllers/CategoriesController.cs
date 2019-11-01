@@ -44,6 +44,40 @@ namespace _1._Northwind_API.Controllers
             return Ok(CreateCategoryDto(category));
         }
 
+        [HttpPost]
+        public ActionResult CreateCategory(CategoryForCreation categoryDto)
+        {
+            var category = mapper.Map<Category>(categoryDto);
+            categoryRepository.Create(category.Name, category.Description);
+            return CreatedAtRoute(
+                nameof(GetCategory),
+                new { categoryId = category.Id },
+                CreateCategoryDto(category));
+        }
+
+        [HttpPut("{categoryId}")]
+        public ActionResult UpdateCategory(
+            int categoryId, Category category)
+        {
+            if (categoryRepository.GetById(categoryId) == null)
+            {
+                return NotFound();
+            }
+            category.Id = categoryId;
+            categoryRepository.Update(category.Id, category.Name, category.Description);
+            return Ok();
+        }
+
+        [HttpDelete("{categoryId}")]
+        public ActionResult DeleteCategory(int categoryId)
+        {
+            if (categoryRepository.Delete(categoryId))
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
+
         ///////////////////
         //
         // Helpers
@@ -61,8 +95,7 @@ namespace _1._Northwind_API.Controllers
 
         private IEnumerable<CategoryDto> CreateResult(IEnumerable<Category> categories)
         {
-            foreach (Category c in categories)
-                yield return CreateCategoryDto(c);
+            return categories.Select(c => CreateCategoryDto(c));
         }
 
     }
