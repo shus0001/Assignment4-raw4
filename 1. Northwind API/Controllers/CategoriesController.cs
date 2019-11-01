@@ -33,6 +33,17 @@ namespace _1._Northwind_API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{categoryId}", Name = nameof(GetCategory))]
+        public ActionResult GetCategory(int categoryId)
+        {
+            var category = categoryRepository.GetById(categoryId);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return Ok(CreateCategoryDto(category));
+        }
+
         ///////////////////
         //
         // Helpers
@@ -43,15 +54,17 @@ namespace _1._Northwind_API.Controllers
         {
             var dto = mapper.Map<CategoryDto>(category);
             dto.Link = Url.Link(
-                    nameof(GetCategories),
+                    nameof(GetCategory),
                     new { categoryId = category.Id });
             return dto;
         }
 
         private object CreateResult(IEnumerable<Category> categories)
         {
+            var totalItems = categoryRepository.NumberOfCategories();
             return new
             {
+                totalItems,
                 items = categories.Select(CreateCategoryDto)
             };
         }
