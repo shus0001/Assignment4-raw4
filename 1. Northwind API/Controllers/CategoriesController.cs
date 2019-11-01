@@ -33,7 +33,7 @@ namespace _1._Northwind_API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{categoryId}", Name = nameof(GetCategory))]
+        [HttpGet("{categories}", Name = nameof(GetCategory))]
         public ActionResult GetCategory(int categoryId)
         {
             var category = categoryRepository.GetById(categoryId);
