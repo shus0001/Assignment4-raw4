@@ -1,5 +1,5 @@
-using _0._Factory;
 using _0._Models;
+using _2._Data_Layer_Abstraction;
 using System;
 using System.Linq;
 using Xunit;
@@ -9,7 +9,6 @@ namespace Assignment4.Tests
     public class DataServiceTests
     {
         /* Categories */
-        private Factory factory = new Factory();
         [Fact]
         public void Category_Object_HasIdNameAndDescription()
         {
@@ -22,7 +21,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetAllCategories_NoArgument_ReturnsAllCategories()
         {
-            var service = factory.CategoryRepository;
+            ICategoryRepository service = null;
             var categories = service.GetAll().ToList();
             Assert.Equal(8, categories.Count);
             Assert.Equal("Beverages", categories.First().Name);
@@ -31,7 +30,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetCategory_ValidId_ReturnsCategoryObject()
         {
-            var service = factory.CategoryRepository;
+            ICategoryRepository service = null;
             var category = service.GetById(1);
             Assert.Equal("Beverages", category.Name);
         }
@@ -39,7 +38,7 @@ namespace Assignment4.Tests
         [Fact]
         public void CreateCategory_ValidData_CreteCategoryAndRetunsNewObject()
         {
-            var service = factory.CategoryRepository;
+            ICategoryRepository service = null;
             var category = service.Create("Test", "CreateCategory_ValidData_CreteCategoryAndRetunsNewObject");
             Assert.True(category.Id > 0);
             Assert.Equal("Test", category.Name);
@@ -52,7 +51,7 @@ namespace Assignment4.Tests
         [Fact]
         public void DeleteCategory_ValidId_RemoveTheCategory()
         {
-            var service = factory.CategoryRepository;
+            ICategoryRepository service = null;
             var category = service.Create("Test", "DeleteCategory_ValidId_RemoveTheCategory");
             var result = service.Delete(category.Id);
             Assert.True(result);
@@ -63,7 +62,7 @@ namespace Assignment4.Tests
         [Fact]
         public void DeleteCategory_InvalidId_ReturnsFalse()
         {
-            var service = factory.CategoryRepository;
+            ICategoryRepository service = null;
             var result = service.Delete(-1);
             Assert.False(result);
         }
@@ -71,7 +70,7 @@ namespace Assignment4.Tests
         [Fact]
         public void UpdateCategory_NewNameAndDescription_UpdateWithNewValues()
         {
-            var service = factory.CategoryRepository;
+            ICategoryRepository service = null;
             var category = service.Create("TestingUpdate", "UpdateCategory_NewNameAndDescription_UpdateWithNewValues");
 
             var result = service.Update(category.Id, "UpdatedName", "UpdatedDescription");
@@ -89,7 +88,7 @@ namespace Assignment4.Tests
         [Fact]
         public void UpdateCategory_InvalidID_ReturnsFalse()
         {
-            var service = factory.CategoryRepository;
+            ICategoryRepository service = null;
             var result = service.Update(-1, "UpdatedName", "UpdatedDescription");
             Assert.False(result);
         }
@@ -111,7 +110,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetProduct_ValidId_ReturnsProductWithCategory()
         {
-            var service = factory.ProductRepository;
+            IProductRepository service = null;
             var product = service.GetById(1);
             Assert.Equal("Chai", product.Name);
             Assert.Equal("Beverages", product.Category.Name);
@@ -120,18 +119,18 @@ namespace Assignment4.Tests
         [Fact]
         public void GetProductsByCategory_ValidId_ReturnsProductWithCategory()
         {
-            var service = factory.ProductRepository;
+            IProductRepository service = null;
             var products = service.GetByCategoryId(1).ToList();
             Assert.Equal(12, products.Count);
             Assert.Equal("Chai", products.First().Name);
-            //Assert.Equal("Beverages", products.First().CategoryName); this doesn't exist?
+            Assert.Equal("Beverages", products.First().Category.Name);
             Assert.Equal("Lakkalikööri", products.Last().Name);
         }
 
         [Fact]
         public void GetProduct_NameSubString_ReturnsProductsThatMachesTheSubString()
         {
-            var service = factory.ProductRepository;
+            IProductRepository service = null;
             var products = service.GetByContainedSubstringInName("em").ToList();
             Assert.Equal(4, products.Count);
             Assert.Equal("NuNuCa Nuß-Nougat-Creme", products.First().Name);
@@ -154,7 +153,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetOrder_ValidId_ReturnsCompleteOrder()
         {
-            var service = factory.OrderRepository;
+            IOrderRepository service = null;
             var order = service.GetById(10248);
             Assert.Equal(3, order.OrderDetails.Count);
             Assert.Equal("Queso Cabrales", order.OrderDetails.First().Product.Name);
@@ -164,7 +163,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetOrders()
         {
-            var service = factory.OrderRepository;
+            IOrderRepository service = null;
             var orders = service.GetAll().ToList();
             Assert.Equal(830, orders.Count);
         }
@@ -187,7 +186,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetOrderDetailByOrderId_ValidId_ReturnsProductNameUnitPriceAndQuantity()
         {
-            var service = factory.OrderDetailsRepository;
+            IOrderDetailsRepository service = null;
             var orderDetails = service.GetByOrderId(10248).ToList();
             Assert.Equal(3, orderDetails.Count);
             Assert.Equal("Queso Cabrales", orderDetails.First().Product.Name);
@@ -198,7 +197,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetOrderDetailByProductId_ValidId_ReturnsOrderDateUnitPriceAndQuantity()
         {
-            var service = factory.OrderDetailsRepository;
+            IOrderDetailsRepository service = null;
             var orderDetails = service.GetByProductId(11).ToList();
             Assert.Equal(38, orderDetails.Count);
             Assert.Equal("1997-05-06", orderDetails.First().Order.Date.ToString("yyyy-MM-dd"));

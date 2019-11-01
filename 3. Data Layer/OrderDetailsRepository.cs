@@ -1,13 +1,13 @@
 ﻿using _0._Models;
-using _1._Data_Layer_Abstraction;
-using _2._Data_Layer.Database_Context;
+using _2._Data_Layer_Abstraction;
+using _3._Data_Layer.Database_Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace _2._Data_Layer
+namespace _3._Data_Layer
 {
     public class OrderDetailsRepository : IOrderDetailsRepository
     {

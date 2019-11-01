@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\0. Factory\0. Factory.csproj" />
     <ProjectReference Include="..\0. Models\0. Models.csproj" />
+    <ProjectReference Include="..\2. Data Layer Abstraction\2. Data Layer Abstraction.csproj" />
   </ItemGroup>
 
 </Project>
