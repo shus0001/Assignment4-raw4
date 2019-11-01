@@ -1,5 +1,6 @@
 ﻿using _0._Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace _3._Data_Layer.Database_Context
 {
     public class NorthwindContext : DbContext
     {
-        private const string connectionString = "host=localhost;db=northwind;uid=postgres;pwd=";
+        private const string ConnectionString = "host=localhost;db=northwind;uid=postgres;pwd=";
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -16,7 +17,7 @@ namespace _3._Data_Layer.Database_Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder.UseNpgsql(ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
