@@ -17,14 +17,6 @@ namespace _3._Data_Layer
             this.databaseContext = databaseContext;
         }
 
-        public IList<Category> GetCategories(PagingAttributes pagingAttributes)
-        {
-            return databaseContext.Categories
-                .Skip(pagingAttributes.Page * pagingAttributes.PageSize)
-                .Take(pagingAttributes.PageSize)
-                .ToList();
-        }
-
         public int NumberOfCategories()
         {
             return databaseContext.Categories.Count();

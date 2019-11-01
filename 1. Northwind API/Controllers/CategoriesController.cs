@@ -24,11 +24,11 @@ namespace _1._Northwind_API.Controllers
         }
 
         [HttpGet(Name = nameof(GetCategories))]
-        public ActionResult GetCategories([FromQuery] PagingAttributes pagingAttributes)
+        public ActionResult GetCategories()
         {
-            var categories = categoryRepository.GetCategories(pagingAttributes);
+            var categories = categoryRepository.GetAll();
 
-            var result = CreateResult(categories, pagingAttributes);
+            var result = CreateResult(categories);
 
             return Ok(result);
         }
@@ -48,24 +48,10 @@ namespace _1._Northwind_API.Controllers
             return dto;
         }
 
-        private object CreateResult(IEnumerable<Category> categories, PagingAttributes attr)
+        private object CreateResult(IEnumerable<Category> categories)
         {
-            var totalItems = categoryRepository.NumberOfCategories();
-            var numberOfPages = Math.Ceiling((double)totalItems / attr.PageSize);
-
-            var prev = attr.Page > 0
-                ? CreatePagingLink(attr.Page - 1, attr.PageSize)
-                : null;
-            var next = attr.Page < numberOfPages - 1
-                ? CreatePagingLink(attr.Page + 1, attr.PageSize)
-                : null;
-
             return new
             {
-                totalItems,
-                numberOfPages,
-                prev,
-                next,
                 items = categories.Select(CreateCategoryDto)
             };
         }
