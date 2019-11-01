@@ -48,10 +48,11 @@ namespace _1._Northwind_API.Controllers
         public ActionResult CreateCategory(CategoryForCreation categoryDto)
         {
             var category = mapper.Map<Category>(categoryDto);
+            category.Id = categoryRepository.NumberOfCategories() + 1;
             categoryRepository.Create(category.Name, category.Description);
             return CreatedAtRoute(
                 nameof(GetCategory),
-                new { categoryId = category.Id },
+                new { categoryId = category.Id},
                 CreateCategoryDto(category));
         }
 
