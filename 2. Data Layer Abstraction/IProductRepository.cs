@@ -6,7 +6,7 @@ using System.Text;
 
 namespace _2._Data_Layer_Abstraction
 {
-    public interface IProductRepository : IGetSingleRepository<Product>
+    public interface IProductRepository : IGetSingleRepository<Product>, IGetAllRepository<Product>
     {
         IEnumerable<Product> GetByContainedSubstringInName(string substring);
         IEnumerable<Product> GetByCategoryId(int categoryId);

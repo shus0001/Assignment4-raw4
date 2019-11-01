@@ -19,6 +19,35 @@ namespace _3._Data_Layer
             this.databaseContext = databaseContext;
         }
 
+        public Product Create(string name, string description)
+        {
+            var nextId = databaseContext.Products.Max(x => x.Id) + 1;
+
+            var product = new Product
+            {
+                Id = nextId,
+                Name = name,
+            };
+
+            databaseContext.Products.Add(product);
+
+            databaseContext.SaveChanges();
+
+            return product;
+        }
+
+        public bool Delete(int id)
+        {
+            if (databaseContext.Products.Find(id) != null)
+            {
+                databaseContext.Products.Remove(databaseContext.Products.Find(id));
+                databaseContext.SaveChanges();
+
+                return true;
+            }
+            return false;
+        }
+
         public IEnumerable<Product> GetByCategoryId(int categoryId)
         {
             var productById = databaseContext.Products.Include("Category").Where(p => p.CategoryId == categoryId).ToList();
@@ -51,6 +80,11 @@ namespace _3._Data_Layer
         public Product GetById(int id)
         {
             return databaseContext.Products.Include("Category").Where(p => p.Id == id).First();
+        }
+
+        public IEnumerable<Product> GetAll()
+        {
+            return databaseContext.Products;
         }
     }
 }

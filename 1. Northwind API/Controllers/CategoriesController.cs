@@ -1,13 +1,10 @@
 ﻿using _0._Models;
 using _1._Northwind_API.Models;
 using _2._Data_Layer_Abstraction;
-using _3._Data_Layer;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace _1._Northwind_API.Controllers
 {
@@ -27,7 +24,6 @@ namespace _1._Northwind_API.Controllers
         public ActionResult GetCategories()
         {
             var categories = categoryRepository.GetAll();
-
             var result = CreateResult(categories);
 
             return Ok(result);
@@ -59,21 +55,10 @@ namespace _1._Northwind_API.Controllers
             return dto;
         }
 
-        private object CreateResult(IEnumerable<Category> categories)
+        private IEnumerable<CategoryDto> CreateResult(IEnumerable<Category> categories)
         {
-            var totalItems = categoryRepository.NumberOfCategories();
-            return new
-            {
-                totalItems,
-                items = categories.Select(CreateCategoryDto)
-            };
+            return categories.Select(c => CreateCategoryDto(c));
         }
-
-        private string CreatePagingLink(int page, int pageSize)
-        {
-            return Url.Link(nameof(GetCategories), new { page, pageSize });
-        }
-
 
     }
 }
