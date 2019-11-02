@@ -1,4 +1,7 @@
-﻿using _0._Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using _0._Models;
 using _1._Northwind_API.Models;
 using _2._Data_Layer_Abstraction;
 using AutoMapper;
@@ -29,6 +32,30 @@ namespace _1._Northwind_API.Controllers
             return Ok(CreateProductDto(product));
         }
 
+        [HttpGet("category/{categoryId}", Name = nameof(GetProductsByCategoryId))]
+        public ActionResult GetProductsByCategoryId(int categoryId)
+        {
+            var products = productRepository.GetByCategoryId(categoryId);
+            if (products == null || products.Count() == 0)
+            {
+                return NotFound(products);
+            }
+            var result = CreateResult(products);
+            return Ok(result);
+        }
+
+        [HttpGet("name/{productName}", Name = nameof(GetProductsByName))]
+        public ActionResult GetProductsByName(string productName)
+        {
+            var products = productRepository.GetByContainedSubstringInName(productName);
+            if (products == null || products.Count() == 0)
+            {
+                return NotFound(products);
+            }
+            var result = CreateResult(products);
+            return Ok(result);
+        }
+
         ///////////////////
         //
         // Helpers
@@ -42,6 +69,11 @@ namespace _1._Northwind_API.Controllers
                     nameof(GetProduct),
                     new { productId = product.Id });
             return dto;
+        }
+
+        private IEnumerable<ProductDto> CreateResult(IEnumerable<Product> products)
+        {
+            return products.Select(p => CreateProductDto(p));
         }
     }
 }
