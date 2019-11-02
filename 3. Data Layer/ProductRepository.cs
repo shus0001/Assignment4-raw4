@@ -2,11 +2,9 @@
 using _2._Data_Layer_Abstraction;
 using _3._Data_Layer.Database_Context;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 
 namespace _3._Data_Layer
 {
@@ -79,12 +77,8 @@ namespace _3._Data_Layer
 
         public Product GetById(int id)
         {
-            return databaseContext.Products.Include("Category").Where(p => p.Id == id).First();
+            return databaseContext.Products.Include("Category").First(p => p.Id == id);
         }
 
-        public IEnumerable<Product> GetAll()
-        {
-            return databaseContext.Products;
-        }
     }
 }
