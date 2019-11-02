@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using _0._Models;
 using _1._Northwind_API.Models;
 using _2._Data_Layer_Abstraction;
@@ -53,6 +54,7 @@ namespace _1._Northwind_API.Controllers
                 return NotFound(products);
             }
             var result = CreateResult(products);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             return Ok(result);
         }
 
