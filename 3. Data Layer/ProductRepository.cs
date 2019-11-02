@@ -77,7 +77,7 @@ namespace _3._Data_Layer
 
         public Product GetById(int id)
         {
-            return databaseContext.Products.Include("Category").First(p => p.Id == id);
+            return databaseContext.Products.Include("Category").FirstOrDefault(p => p.Id == id);
         }
 
     }
