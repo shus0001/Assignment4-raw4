@@ -36,7 +36,7 @@ namespace _1._Northwind_API.Controllers
         public ActionResult GetProductsByCategoryId(int categoryId)
         {
             var products = productRepository.GetByCategoryId(categoryId);
-            if (products == null || products.Count() == 0)
+            if (products.Count() == 0)
             {
                 return NotFound(products);
             }
@@ -48,7 +48,7 @@ namespace _1._Northwind_API.Controllers
         public ActionResult GetProductsByName(string productName)
         {
             var products = productRepository.GetByContainedSubstringInName(productName);
-            if (products == null || products.Count() == 0)
+            if (products.Count() == 0)
             {
                 return NotFound(products);
             }
