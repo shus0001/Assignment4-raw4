@@ -16,13 +16,12 @@ namespace _1._Northwind_API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var northwindContext = new NorthwindContext();
             services.AddControllers();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            var northwindContext = new NorthwindContext();
             services.AddSingleton<ICategoryRepository>(provider => new CategoryRepository(northwindContext));
-
             services.AddSingleton<IProductRepository>(provider => new ProductRepository(northwindContext));
         }
 

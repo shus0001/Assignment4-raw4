@@ -1,9 +1,5 @@
 ﻿using _0._Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace _3._Data_Layer.Database_Context
 {
