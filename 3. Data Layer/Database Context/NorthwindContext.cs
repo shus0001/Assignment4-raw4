@@ -5,7 +5,7 @@ namespace _3._Data_Layer.Database_Context
 {
     public class NorthwindContext : DbContext
     {
-        private const string ConnectionString = "host=localhost;db=northwind;uid=postgres;pwd=Hotmai12";
+        private const string ConnectionString = "host=localhost;db=northwind;uid=postgres;pwd=";
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
