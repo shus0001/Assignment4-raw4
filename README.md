@@ -29,11 +29,11 @@ This assignment was developed by group **raw4** of course RAWDATA (Master's in C
 
 1. Terminal:
 
-<img src="Resources/Terminal-testing.png" width=500px>
+<img src="https://raw.githubusercontent.com/shus0001/Assignment4-raw4/master/Resources/Terminal-testing.png" width=500px>
 
 2. Visual Studio test explorer:
 
-<img src="Resources/Test-Explorer-AllTests.png" width=700px>
+<img src="https://raw.githubusercontent.com/shus0001/Assignment4-raw4/master/Resources/Test-Explorer-AllTests.png" width=700px>
 
 ----
 
