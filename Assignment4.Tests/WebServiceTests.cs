@@ -220,7 +220,6 @@ namespace Assignment4.Tests
                 "application/json");
             var response = client.PostAsync(url, requestContent).Result;
             var data = response.Content.ReadAsStringAsync().Result;
-            Debug.WriteLine(data);
             return ((JObject)JsonConvert.DeserializeObject(data), response.StatusCode);
         }
 
