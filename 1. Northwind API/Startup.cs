@@ -20,9 +20,8 @@ namespace _1._Northwind_API
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            var northwindContext = new NorthwindContext();
-            services.AddTransient<ICategoryRepository>(provider => new CategoryRepository(northwindContext));
-            services.AddTransient<IProductRepository>(provider => new ProductRepository(northwindContext));
+            services.AddTransient<ICategoryRepository>(provider => new CategoryRepository(new NorthwindContext()));
+            services.AddTransient<IProductRepository>(provider => new ProductRepository(new NorthwindContext()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

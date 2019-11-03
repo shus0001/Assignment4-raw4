@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -219,6 +220,7 @@ namespace Assignment4.Tests
                 "application/json");
             var response = client.PostAsync(url, requestContent).Result;
             var data = response.Content.ReadAsStringAsync().Result;
+            Debug.WriteLine(data);
             return ((JObject)JsonConvert.DeserializeObject(data), response.StatusCode);
         }
 
