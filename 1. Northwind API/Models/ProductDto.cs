@@ -10,8 +10,7 @@ namespace _1._Northwind_API.Models
         public string QuantityPerUnit { get; set; }
         public int UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
-        public string CategoryName => Category.Name;
         public string ProductName => Name;
-
+        public string CategoryName => Category?.Name;
     }
 }
