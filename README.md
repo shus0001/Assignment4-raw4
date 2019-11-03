@@ -27,13 +27,13 @@ This assignment was developed by group **raw4** of course RAWDATA (Master's in C
 
 ## Results:
 
-1. Terminal: (Part 1 only)
+1. Terminal:
 
 <img src="Resources/Terminal-testing.png" width=500px>
 
-2. Visual Studio test explorer: (Part 1 and 2)
+2. Visual Studio test explorer:
 
-<img src="Resources/Test-Explorer-AllTests.png" width=500px>
+<img src="Resources/Test-Explorer-AllTests.png" width=700px>
 
 ----
 
@@ -59,7 +59,7 @@ psql -U postgres -c "create database northwind"
 psql -U postgres -d northwind -f .\Resources\northwind_postgres.sql
 ```
 
-Now, the database has been created and seeded. Use the software of your choice to connect and visualise the database, or use the included pgAdmin. For more information on the data, [read here.](https://github.com/shus0001/Assignment4-raw4/blob/master/RAWDATA%202018%20-%20Assignment%204%20part%20I.pdf)
+Now, the database has been created and seeded. Use the software of your choice to connect and visualise the database, or use the included pgAdmin. For more information on the data, [read here.](Resources/RAWDATA-2019-Assignment4.pdf)
 
 4. **Important:** Update with the password of your postgres user in `3.Data Layer\Database Context\NorthwindContext.cs`: Line 12 on the variable `string connectionString`.
 > _You can also update the name of the database and the user if you had your database set up differently._
@@ -73,18 +73,28 @@ Now, the database has been created and seeded. Use the software of your choice t
 
 6. Start the server.
 
-From terminal:
+    - From terminal:
 
-        i. Navigate to "1. Northwind API" folder. 
-            cd '.\1. Northwind API\'
-        ii. Run the project. 
-            dotnet watch run
+            1. Navigate to "1. Northwind API" folder. 
+                cd '.\1. Northwind API\'
+            2. Run the project. 
+                dotnet watch run
 
-From Visual Studio GUI:
+    - From Visual Studio GUI:
 
-        i. "Debug" menu > "Start without Debugging" or `Ctrl` + `F5``
+            1. "Debug" menu > "Start without Debugging" or `Ctrl` + `F5`
 
-7. Run the test by opening "Test" menu > "Test Explorer" and run the tests **individually**. (Known issue)
+7. Run the test.
 
+    - From terminal:
+
+            1. Navigate to projects root folder. 
+                cd ..
+            2. Run the project. 
+                dotnet test
+
+    - From Visual Studio GUI:
+
+            1. Go to "Test" menu > "Run All Tests"
 
 Happy Coding! 👨‍💻 👩‍💻
